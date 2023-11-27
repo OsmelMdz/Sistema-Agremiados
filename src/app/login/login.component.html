@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg nav justify-content-center">
+  <ul class="nav justify-content-center">
+    <li class="nav-item navigation">
+      <button (click)="showAlert()">Formatos</button>
+    </li>
+    <li class="nav-item navigation">
+      <button (click)="showAlert()">Convocatorias</button>
+    </li>
+    <li class="nav-item navigation">
+      <button (click)="showAlert()">Convenios</button>
+    </li>
+  </ul>
+</nav>
+<br><br>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mx-auto login-form">
+        <h1 class="text-center">Sistema de Agremiados</h1>
+        <img src="assets/img/utvco.png"
+          style="height: auto; width: 18rem; margin-left: auto; margin-right: auto; text-align: center;" alt="Logo">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="text-center">
+          <div>
+            <input formControlName="NUE" type="number" class="form-control" id="floatingInput" placeholder="NUE"
+              maxlength="10">
+            <small *ngIf="NUE1() && !NUEV()" class="text-danger">
+              El NUE es obligatorio y debe ser de 10 digitos.
+            </small>
+          </div>
+          <div>
+            <input formControlName="password" type="password" class="form-control" id="floatingPassword"
+              placeholder="Password">
+            <small *ngIf="passwordT() && !passwordV()" class="text-danger">
+              La contraseña es obligatoria.
+            </small>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" [disabled]="loginForm.invalid" type="submit">Acceder</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar fixed-bottom">
+  <div class="container-fluid">
+    <p class="text-center">Desarrollado por Osmel Mendez</p>
+    <a class="navbar-brand" href="https://github.com/OsmelMdz">Git Hub</a>
+  </div>
+</nav>

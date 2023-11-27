@@ -1,0 +1,28 @@
+<div class="container mt-3">
+  <h2>Lista de solicitud</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>NUE</th>
+          <th>Fecha</th>
+          <th>Descargar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Los datos se llenarán dinámicamente aquí -->
+        <tr *ngFor="let solicitud of solicitudes">
+          <td>{{ solicitud.NUE }}</td>
+          <td>{{ solicitud.updated_at}}</td>
+          <td>
+            <a class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"
+              [href]="solicitud.ruta_archivo" download>
+              Descargar
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

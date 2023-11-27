@@ -1,0 +1,52 @@
+<div class="container mt-3">
+  <h2>Lista de Agremiados</h2>
+<div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#ID</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Nombre(s)</th>
+          <th>Sexo</th>
+          <th>NUP</th>
+          <th>NUE</th>
+          <th>RFC</th>
+          <th>NSS</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Telefono</th>
+          <th>Cuota</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Los datos se llenarán dinámicamente aquí -->
+        <tr *ngFor="let agremiado of agremiados">
+          <td>{{ agremiado.id }}</td>
+          <td>{{ agremiado.a_paterno }}</td>
+          <td>{{ agremiado.a_materno }}</td>
+          <td>{{ agremiado.nombre }}</td>
+          <td>{{ agremiado.sexo }}</td>
+          <td>{{ agremiado.NUP }}</td>
+          <td>{{ agremiado.NUE }}</td>
+          <td>{{ agremiado.RFC }}</td>
+          <td>{{ agremiado.NSS }}</td>
+          <td>{{ agremiado.fecha_nacimiento }}</td>
+          <td>{{ agremiado.telefono }}</td>
+          <td>{{ agremiado.cuota }}</td>
+          <td>
+            <!-- Aquí puedes agregar botones de acciones, por ejemplo, editar o eliminar -->
+            <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarAgremiado(agremiado)">
+              <i class="bi bi-pencil"></i> Editar
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="eliminarAgremiado(agremiado.id)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>        
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  

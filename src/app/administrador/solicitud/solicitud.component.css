@@ -1,0 +1,54 @@
+/* estudiantes.component.css */
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  
+  th,
+  td {
+    border: 1px solid #e2e2e2; /* Color de borde suave */
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f5f5f5; /* Color de fondo suave para el encabezado */
+    color: #333;
+  }
+  
+  /* Estilos para los controles de paginación */
+  .pagination {
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .page-item {
+    margin: 5px;
+    display: flex;
+  }
+  
+  .page-link {
+    border: 1px solid #e2e2e2; /* Color de borde suave para los botones de paginación */
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .page-link:hover {
+    background-color: #e2e2e2; /* Color de fondo suave al pasar el cursor sobre los botones */
+    color: #333;
+  }
+  
+  .page-item.disabled .page-link {
+    pointer-events: none;
+    color: #aaa;
+    border-color: #aaa;
+  }
+  

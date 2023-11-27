@@ -1,0 +1,28 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.div-title {
+    padding: 30px;
+    
+    background: rgb(249 250 251 / 45%);
+}
+
+/* .backimg{
+ 
+        background: url("https://mdbootstrap.com/img/Photos/Others/architecture.webp")no-repeat center center;
+        background-size: cover;
+   
+}
+
+.view {
+    height: 100vh !important;
+   }
+
+   .rgba-gradient .full-bg-img {
+    background: linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%) !important;
+  } */
+  .alinearc{
+    text-align: center;
+  }
+
+  
+
