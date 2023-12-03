@@ -9,17 +9,12 @@ import { AuthGuardAgremiado } from './guards/auth-agremiado.guard';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent},
   { path: 'formato', component: FormatosComponent },
   { path: 'convocatoria', component: ConvocatoriasComponent },
   { path: 'convenio', component: ConveniosComponent },
-  { path: 'usuario', component: UsuarioComponent,  canActivate: [AuthGuardAgremiado], children: [
-    { path: 'formato', component: FormatosComponent },
-    { path: 'convocatoria', component: ConvocatoriasComponent },
-    { path: 'convenio', component: ConveniosComponent },
-  ] },
+  { path: 'usuario', component: UsuarioComponent, canActivate: [AuthGuardAgremiado]},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-
   {
     path: 'ha',
     loadChildren: () => import('./administrador/admin.module').then(m => m.AdminModule)
