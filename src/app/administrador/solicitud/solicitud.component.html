@@ -14,12 +14,16 @@
         <!-- Los datos se llenarán dinámicamente aquí -->
         <tr *ngFor="let solicitud of solicitudes">
           <td>{{ solicitud.NUE }}</td>
-          <td>{{ solicitud.updated_at}}</td>
+          <td>{{ solicitud.fecha_subida}}</td>
           <td>
-            <a class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"
+           <!--  <a class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"
               [href]="solicitud.ruta_archivo" download>
               Descargar
-            </a>
+            </a> -->
+            <a class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"
+    download (click)="descargarArchivo(solicitud.ruta_archivo)">
+   Descargar
+</a>
           </td>
         </tr>
       </tbody>

@@ -23,11 +23,9 @@ interface Curso {
   templateUrl: './veragremiado.component.html',
   styleUrls: ['./veragremiado.component.css']
 })
-export class VeragremiadoComponent { 
+export class VeragremiadoComponent {
   agremiados: any[] = []; // Ajusta el tipo de datos según la estructura de tus agremiados
 
-
-  
 
   constructor(private agremiado: AgremiadoService) {}
 
@@ -46,7 +44,6 @@ export class VeragremiadoComponent {
       }
     );
   }
-  
 
   editarAgremiado(agremiado: any) {
     // Agrega lógica para editar un agremiado
@@ -61,7 +58,7 @@ export class VeragremiadoComponent {
       },
       buttonsStyling: false
     });
-  
+
     swalWithBootstrapButtons.fire({
       title: '¿Deseas eliminar agremiados?',
       text: '',

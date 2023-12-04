@@ -1,11 +1,11 @@
-<nav class="navbar fixed-top navbar-expand-lg bg-body-primary">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-body-dark bg-dark">
   <div class="container-fluid">
     <button class="navbar-toggler custom-navbar-toggler-icon" type="button" data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand">ADMINISTRADOR</a>
+    <a *ngFor="let agremiado of agremiados" class="navbar-brand"><i class="bi bi-person-gear"></i> {{agremiado.nombre}}</a>
 
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -16,7 +16,7 @@
       <div class="offcanvas-body px-0">
         <ul class="navbar-nav justify-content-end flex-grow-1 ">
           <li class="nav-item">
-            <a class="nav-link ms-4 active" aria-current="page" routerLink="./homeadmin" data-bs-dismiss="offcanvas"> <i
+            <a class="nav-link ms-4 " aria-current="page" routerLink="./homeadmin" data-bs-dismiss="offcanvas"> <i
                 class="fs-5 bi-house"></i><span class="ms-2">Home</span></a>
           </li>
           <li class="nav-item">
@@ -25,21 +25,16 @@
           </li>
           <li class="nav-item">
             <a class="nav-link ms-4" routerLink="./agremiado" data-bs-dismiss="offcanvas"><i
-                class="fs-5 bi-people"></i><span class="ms-2">Agregar Agremiado</span> </a>
+                class="fs-5 bi-person-add"></i><span class="ms-2">Agregar Agremiado</span> </a>
           </li>
           <li class="nav-item">
             <a class="nav-link ms-4" routerLink="./solicitud" data-bs-dismiss="offcanvas">
-              <i class="fa-solid fa-user"></i><span class="ms-2">Ver Solicitud</span> </a>
+              <i class="fs-5 bi-person-down"></i><span class="ms-2">Ver Solicitud</span> </a>
           </li>
           <li class="nav-item">
             <a class="nav-link ms-4" routerLink="confirmarAlert()" (click)="confirmarAlert()" data-bs-dismiss="offcanvas">
-              <i class="bi-box-arrow-left"></i><span class="ms-2">Cerrar Sesión</span> </a>
+              <i class="fs-5 bi-box-arrow-left"></i><span class="ms-2">Cerrar Sesión</span> </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link ms-4" routerLink="./administrators" data-bs-dismiss="offcanvas"><i
-                class="fs-5 bi-person-gear"></i><span class="ms-2">Ver aviso</span> </a>
-          </li> -->
-
         </ul>
 
       </div>

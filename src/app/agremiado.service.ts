@@ -8,7 +8,6 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
 export class AgremiadoService {
 
   url: string = 'http://localhost:8000/api';
-
   token: any = '';
   user: any = {};
   datos: any;
@@ -46,6 +45,15 @@ agregarAgremiado2(agremiadoData: any): Observable<any> {
   });
 
   return this.http.post<any>(this.apiUrl, agremiadoData, { headers });
+}
+
+getAgremiadosConRol2(): Observable<any[]> {
+  const url = `${this.url}/obtenerAgremiados`; // Reemplaza con la ruta real de tu endpoint
+  return this.http.get<any[]>(url);
+}
+
+getVerAdmin(): Observable<any>{
+  return this.http.get<any>(this.url+'/obtenerAdmin');
 }
 
 

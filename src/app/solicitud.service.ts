@@ -13,4 +13,13 @@ export class SolicitudService {
   getVersolicitud(): Observable<any>{
     return this.http.get<any>(this.url+'/obtenerSolicitud');
   }
+  agregarSolicitud(nuevaSolicitud: any): Observable<any> {
+    const url = `${this.url}/agregarsolicitud`;
+    return this.http.post<any>(url, nuevaSolicitud);
+  }
+  descargarArchivo(nombreArchivo: string): Observable<Blob> {
+    const url = `${this.url}/app/public/ruta_del_archivo/${nombreArchivo}`;
+    // Realiza la solicitud GET con responseType 'blob' para manejar archivos binarios
+    return this.http.get(url, { responseType: 'blob' });
+  }
 }

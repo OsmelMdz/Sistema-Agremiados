@@ -9,7 +9,7 @@ import { SolicitudService } from 'src/app/solicitud.service';
 export class SolicitudComponent {
   solicitudes: any[] = []; // Ajusta el tipo de datos según la estructura de tus solicitudes
 
-  constructor(private solic: SolicitudService, 
+  constructor(private solic: SolicitudService,
     ) {}
 
   ngOnInit() {
@@ -28,5 +28,25 @@ export class SolicitudComponent {
     );
   }
 
-  
+  descargarArchivo(nombreArchivo: string): void {
+    console.log(nombreArchivo);
+    this.solic.descargarArchivo(nombreArchivo).subscribe(
+      (blob: Blob) => {
+        console.log(nombreArchivo);
+        console.log('Blob:', blob); // Muestra los datos en la consola
+        // Crea un objeto URL para el blob y lo utiliza para abrir una nueva ventana o pestaña
+        const url = window.URL.createObjectURL(blob);
+        console.log(url);
+        window.open(url, '_blank');
+        window.URL.revokeObjectURL(url); // Libera recursos
+      },
+      (error) => {
+        console.error('Error al descargar el archivo:', error);
+        // Maneja el error según sea necesario
+      }
+    );
+  }
+
+
+
 }
