@@ -89,9 +89,9 @@
           <div *ngIf="agremiadoForm.get('cuota')?.invalid && agremiadoForm.get('cuota')?.touched"
             class="error-message form-text text-danger">Tu cuota es requerido</div>
         </div>
-
-        <div class="col-md-12">
-          <button type="submit" class="btn btn-primary" [disabled]="agremiadoForm.invalid">Agregar</button>
+        <div class="col-md-6">
+          <br>
+          <button type="submit" class="btn btn-primary" [disabled]="agremiadoForm.invalid">Agregar Agremiado</button>
         </div>
       </form>
     </div>

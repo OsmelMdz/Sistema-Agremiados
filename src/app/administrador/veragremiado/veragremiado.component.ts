@@ -102,12 +102,12 @@ export class VeragremiadoComponent {
 
 
 
-  editarAgremiado(id: number) {
+  editarAgremiado(agremiado: Agremiado) {
+    console.log('Agremiado a editar:', agremiado);
     // Abre el componente de edición en un cuadro de diálogo modal
     const dialogRef = this.dialog.open(EditaragremiadoComponent, {
-      data: { id } // Pasa el agremiado y el ID al componente de edición
+      data: { agremiado } // Pasa el agremiado completo al componente de edición
     });
-    console.log('ID del agremiado:', id);
 
     // Suscríbete a cualquier acción realizada en el componente de edición
     dialogRef.afterClosed().subscribe(result => {
@@ -116,6 +116,9 @@ export class VeragremiadoComponent {
       this.getAgremiados();
     });
   }
+
+
+
 
 
   eliminarAgremiado(id: number) {

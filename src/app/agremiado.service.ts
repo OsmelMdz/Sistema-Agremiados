@@ -37,7 +37,7 @@ eliminarAgremiado(id: number): Observable<any> {
 }
 
 actualizarAgremiado(id: number, datosActualizados: any): Observable<any> {
-  return this.http.patch<any>(`${this.url}/actualizarAgremiado/${id}`, datosActualizados);
+  return this.http.post<any>(`${this.url}/actualizarAgremiado/${id}`, datosActualizados);
 }
 
 agregarAgremiado(datosNuevoAgremiado: any): Observable<any> {

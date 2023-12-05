@@ -62,7 +62,7 @@ export class LoginComponent {
             Swal.fire({
               icon: 'success',
               title: 'Hola!',
-              text: 'Bienvenido a Administrador',
+              text: 'Bienvenido Administrador',
               showConfirmButton: true
             });
           } else if (user.id_rol === 2) {

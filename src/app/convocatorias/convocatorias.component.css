@@ -28,6 +28,22 @@
   color: #2b0b0b;
 }
 
+.navigation2 button {
+  margin: 0 10px;
+  background-color: rgb(122, 11, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navigation2 button:hover {
+  background-color: #da8383;
+  color: #2b0b0b;
+}
+
 .login-form {
   background-color: #ffffff;
   border: 1px solid #ccc;
