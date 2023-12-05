@@ -1,6 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
+(pdfMake as any).vfs=pdfFonts.pdfMake.vfs;
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +26,10 @@ export class AgremiadoService {
 
 getVerAagremido(): Observable<any>{
   return this.http.get<any>(this.url+'/obtenerAgremiados');
+}
+
+obtenerAgremiadoPorId(id: number): Observable<any>{
+  return this.http.get<any>(`${this.url}/obtenerAgremiadoId/${id}`);
 }
 
 eliminarAgremiado(id: number): Observable<any> {

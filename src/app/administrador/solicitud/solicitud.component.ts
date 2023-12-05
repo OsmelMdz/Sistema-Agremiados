@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SolicitudService } from 'src/app/solicitud.service';
-
 @Component({
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
@@ -9,7 +8,7 @@ import { SolicitudService } from 'src/app/solicitud.service';
 export class SolicitudComponent {
   solicitudes: any[] = []; // Ajusta el tipo de datos según la estructura de tus solicitudes
 
-  constructor(private solic: SolicitudService,
+  constructor(private solic: SolicitudService
     ) {}
 
   ngOnInit() {
@@ -32,7 +31,6 @@ export class SolicitudComponent {
     console.log(nombreArchivo);
     this.solic.descargarArchivo(nombreArchivo).subscribe(
       (blob: Blob) => {
-        console.log(nombreArchivo);
         console.log('Blob:', blob); // Muestra los datos en la consola
         // Crea un objeto URL para el blob y lo utiliza para abrir una nueva ventana o pestaña
         const url = window.URL.createObjectURL(blob);

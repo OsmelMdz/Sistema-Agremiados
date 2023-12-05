@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AgremiadoService } from '../agremiado.service';
 import { SolicitudService } from '../solicitud.service';
+import { AuthService } from '../auth.service';
 interface Usuario {
   id: number;
   a_paterno: string;
@@ -35,23 +36,27 @@ export class UsuarioComponent {
   selectedFile: File | undefined;
 
 
-  constructor(private rou: Router, private authS: LoginService,private agremiado: AgremiadoService, private solic: SolicitudService) { }
+  constructor(private rou: Router,private auth: AuthService, private authS: LoginService,private agremiado: AgremiadoService, private solic: SolicitudService) { }
 
   ngOnInit() {
     this.getAgremiados();
   }
 
   getAgremiados() {
+    const idUsuarioLogeado = this.auth.getUser().id; // Utiliza la propiedad correcta para obtener el ID del usuario logeado
     this.agremiado.getVerAagremido().subscribe(
       (data) => {
-        this.agremiados = data; // Asigna los datos recibidos al arreglo agremiados
-        console.log('Datos obtenidos:', this.agremiados); // Muestra los datos en la consola
+        // Filtra los datos para mostrar solo aquellos del usuario logeado
+        this.agremiados = data.filter((agremiado: { id: any; }) => agremiado.id === idUsuarioLogeado);
+
+        console.log('Datos obtenidos del usuario logeado:', this.agremiados);
       },
       (error) => {
         console.error('Error al obtener agremiados:', error);
       }
     );
   }
+
 
   agregarSolicitud() {
     // Asegúrate de que hay un archivo seleccionado
@@ -129,8 +134,8 @@ export class UsuarioComponent {
     if (result.isConfirmed) {
         this.logOut();
         Swal.fire(
-          'Logged Out!',
-          'You have been logged out successfully.',
+          'Cerrando Sesión',
+          'Has cerrado tu sesión correctamente.',
           'success'
         );
     }

@@ -25,7 +25,7 @@ export class LoginComponent {
   }
 
   redirectToPage(page: string): void {
-    this.router.navigate(['', page]); // Reemplaza '/ruta-base' con la ruta base de tu aplicación
+    this.router.navigate(['', page]); // Redirecciona a la página indicada
   }
 
   ngOnInit() {
@@ -58,7 +58,7 @@ export class LoginComponent {
           if (user.id_rol === 1) {
             this.router.navigate(['/homeadmin']);
             console.log('Usuario Administrador');
-            console.log(user);
+            console.log('Usuario Admin:', user);
             Swal.fire({
               icon: 'success',
               title: 'Hola!',
@@ -68,7 +68,7 @@ export class LoginComponent {
           } else if (user.id_rol === 2) {
             this.router.navigate(['/usuario']);
             console.log('Usuario Agremiado');
-            console.log(user);
+            console.log('Usuario Agremiado:', user);
             Swal.fire({
               icon: 'success',
               title: 'Hola!',
@@ -99,7 +99,6 @@ export class LoginComponent {
   }
 
   showAlert() {
-    /*  alert('Debes estar logeado para acceder a esta sección.'); */
     Swal.fire({
       icon: 'error',
       title: '¡Error!',

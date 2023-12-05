@@ -1,8 +1,12 @@
+import { PageOrientation } from './../../../../node_modules/@types/pdfmake/interfaces.d';
 import { Component } from '@angular/core';
 import { AgremiadoService } from 'src/app/agremiado.service';
 import Swal from 'sweetalert2';
-
-interface Curso {
+import { MatDialog } from '@angular/material/dialog';
+import { EditaragremiadoComponent } from '../editaragremiado/editaragremiado.component';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+interface Agremiado {
   id: number;
   a_paterno: string;
   a_materno: string;
@@ -24,10 +28,10 @@ interface Curso {
   styleUrls: ['./veragremiado.component.css']
 })
 export class VeragremiadoComponent {
-  agremiados: any[] = []; // Ajusta el tipo de datos según la estructura de tus agremiados
+  agremiados: Agremiado[] = []; // Ajusta el tipo de datos según la estructura de tus agremiados
 
 
-  constructor(private agremiado: AgremiadoService) {}
+  constructor(private agremiado: AgremiadoService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAgremiados();
@@ -37,7 +41,7 @@ export class VeragremiadoComponent {
     this.agremiado.getVerAagremido().subscribe(
       (data) => {
         this.agremiados = data; // Asigna los datos recibidos al arreglo agremiados
-        console.log('Datos obtenidos:', this.agremiados); // Muestra los datos en la consola
+        console.log('Lista de Agremiados:', this.agremiados); // Muestra los datos en la consola
       },
       (error) => {
         console.error('Error al obtener agremiados:', error);
@@ -45,10 +49,74 @@ export class VeragremiadoComponent {
     );
   }
 
-  editarAgremiado(agremiado: any) {
-    // Agrega lógica para editar un agremiado
-    console.log('Editar agremiado:', agremiado);
+  generatePDF(agremiados: any) {
+    try {
+      const documentDefinition = {
+        PageOrientation: 'portrait', // Cambiado a orientación vertical
+        content: [
+          { text: 'Lista de Agremiados', style: 'header' },
+          '\n\n',
+          {
+            table: {
+              headerRows: 1,
+              widths: [20, 50, 50, 40, 50, 30, 30, 30, 30, 40, 40, 20],
+              body: [
+                ['#ID', 'Apellido Paterno', 'Apellido Materno', 'Nombre(s)', 'Sexo', 'NUP', 'NUE', 'RFC', 'NSS', 'Fecha de Nacimiento', 'Telefono', 'Cuota'],
+                ...agremiados.map((p: any) => [
+                  p.id, p.a_paterno, p.a_materno, p.nombre, p.sexo, p.NUP, p.NUE, p.RFC, p.NSS, p.fecha_nacimiento, p.telefono, p.cuota
+                ]),
+              ],
+            },
+          },
+        ],
+        styles: {
+          header: {
+            fontSize: 12,
+            bold: true,
+          },
+        },
+      };
+
+      // Crear el PDF
+      const pdfDocGenerator = pdfMake.createPdf(documentDefinition);
+
+      Swal.fire({
+        icon: 'success',
+        text: 'Solicitud enviada correctamente',
+        showConfirmButton: true
+      });
+
+      // Descargar el PDF
+      pdfDocGenerator.download('Lista_de_Agremiados.pdf');
+    } catch (error) {
+      console.error('Error al generar el PDF:', error);
+      Swal.fire({
+        icon: 'error',
+        title: '¡Error!',
+        text: 'Al generar el PDF',
+        showConfirmButton: true
+      });
+    }
   }
+
+
+
+
+  editarAgremiado(id: number) {
+    // Abre el componente de edición en un cuadro de diálogo modal
+    const dialogRef = this.dialog.open(EditaragremiadoComponent, {
+      data: { id } // Pasa el agremiado y el ID al componente de edición
+    });
+    console.log('ID del agremiado:', id);
+
+    // Suscríbete a cualquier acción realizada en el componente de edición
+    dialogRef.afterClosed().subscribe(result => {
+      // Puedes realizar acciones adicionales después de cerrar el componente de edición
+      console.log('Resultado después de cerrar:', result);
+      this.getAgremiados();
+    });
+  }
+
 
   eliminarAgremiado(id: number) {
     const swalWithBootstrapButtons = Swal.mixin({

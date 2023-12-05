@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <h2>Lista de Agremiados</h2>
-<div class="table-responsive">
+  <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -20,6 +20,7 @@
         </tr>
       </thead>
       <tbody>
+
         <!-- Los datos se llenarán dinámicamente aquí -->
         <tr *ngFor="let agremiado of agremiados">
           <td>{{ agremiado.id }}</td>
@@ -36,17 +37,19 @@
           <td>{{ agremiado.cuota }}</td>
           <td>
             <!-- Aquí puedes agregar botones de acciones, por ejemplo, editar o eliminar -->
-            <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarAgremiado(agremiado)">
-              <i class="bi bi-pencil"></i> Editar
+            <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarAgremiado(agremiado.id)">
+              <i class="fs-5 bi-pencil"></i> Editar
             </button>
+            <br><br>
             <button type="button" class="btn btn-danger btn-sm" (click)="eliminarAgremiado(agremiado.id)">
-              <i class="bi bi-trash"></i> Eliminar
-            </button>        
+              <i class="fs-5 bi-trash"></i> Eliminar
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
+    <button type="button" class="btn btn-primary btn-sm mr-1" (click)="generatePDF(agremiados)">
+      Imprimir Lista
+    </button>
   </div>
 </div>
-
-  

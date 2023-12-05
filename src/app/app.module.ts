@@ -13,8 +13,10 @@ import { RouterModule } from '@angular/router';
 import { FormatosComponent } from './formatos/formatos.component';
 import { ConvocatoriasComponent } from './convocatorias/convocatorias.component';
 import { ConveniosComponent } from './convenios/convenios.component';
-import { AdminModule } from './administrador/admin.module';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { AdminModule } from './administrador/admin.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,9 +37,9 @@ import { UsuarioComponent } from './usuario/usuario.component';
     RouterLink ,
     ReactiveFormsModule,
     RouterModule,
-    AdminModule
-    
-    
+    AdminModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

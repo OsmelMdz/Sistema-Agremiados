@@ -1,1 +1,73 @@
-<p>editaragremiado works!</p>
+<div class="container">
+  <h2>Editar Agremiado</h2>
+
+  <form [formGroup]="agremiadoForm" (ngSubmit)="actualizarAgremiado()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="a_paterno">Apellido Paterno</label>
+          <input type="text" id="a_paterno" formControlName="a_paterno" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="a_materno">Apellido Materno</label>
+          <input type="text" id="a_materno" formControlName="a_materno" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">Nombre(s)</label>
+          <input type="text" id="nombre" formControlName="nombre" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="sexo">Sexo</label>
+          <select id="sexo" formControlName="sexo" class="form-control">
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="NUP">NUP</label>
+          <input type="text" id="NUP" formControlName="NUP" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="NUE">NUE</label>
+          <input type="text" id="NUE" formControlName="NUE" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="RFC">RFC</label>
+          <input type="text" id="RFC" formControlName="RFC" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="NSS">NSS</label>
+          <input type="text" id="NSS" formControlName="NSS" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+          <input type="text" id="fecha_nacimiento" formControlName="fecha_nacimiento" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="text" id="telefono" formControlName="telefono" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="cuota">Cuota</label>
+          <input type="text" id="cuota" formControlName="cuota" class="form-control">
+        </div>
+      </div>
+    </div>
+ <br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary form-control btn-block">Guardar Cambios</button>
+    </div>
+  </form>
+</div>

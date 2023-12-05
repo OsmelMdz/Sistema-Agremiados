@@ -19,7 +19,6 @@ export class SolicitudService {
   }
   descargarArchivo(nombreArchivo: string): Observable<Blob> {
     const url = `${this.url}/app/public/ruta_del_archivo/${nombreArchivo}`;
-    // Realiza la solicitud GET con responseType 'blob' para manejar archivos binarios
     return this.http.get(url, { responseType: 'blob' });
   }
 }
