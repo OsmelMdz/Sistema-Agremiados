@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import Swal from 'sweetalert2';
 import { AgremiadoService } from '../agremiado.service';
 import { SolicitudService } from '../solicitud.service';
