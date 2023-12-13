@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AgremiadoService } from 'src/app/agremiado.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-agremiado',
   templateUrl: './agremiado.component.html',
@@ -9,7 +9,7 @@ import { AgremiadoService } from 'src/app/agremiado.service';
 })
 export class AgremiadoComponent {
   agremiadoForm: FormGroup;
-  
+
 
 
   constructor(private fb: FormBuilder, private tuServicio: AgremiadoService) {
@@ -35,14 +35,25 @@ export class AgremiadoComponent {
       response => {
         console.log('Agremiado agregado correctamente', response);
         // Recargar la página después de agregar el agremiado
+        Swal.fire({
+          icon: 'success',
+          text: 'Agremiado agregado correctamente',
+          showConfirmButton: true
+        });
         location.reload();
       },
       error => {
         console.error('Error al agregar agremiado', error);
         // Manejar el error si es necesario
+        Swal.fire({
+          icon: 'error',
+          title: '¡Error!',
+          text: 'Al agregar agremiado',
+          showConfirmButton: true
+        });
       }
     );
   }
 
- 
+
 }
