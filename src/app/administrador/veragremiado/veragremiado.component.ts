@@ -143,23 +143,25 @@ export class VeragremiadoComponent {
         this.agremiado.eliminarAgremiado(id).subscribe(
           (res: any) => {
             console.log('Agremiado eliminado:', res);
-            // Recargar los datos después de la eliminación
-            this.getAgremiados();
-            // Aquí puedes realizar acciones adicionales después de la eliminación
             swalWithBootstrapButtons.fire(
               '¡Aceptado!',
               'Agremiado ha sido eliminado',
               'success'
             );
+            this.getAgremiados();
           },
           (error) => {
             console.error('Error al eliminar agremiado:', error);
-            // Puedes manejar el error aquí, por ejemplo, mostrando una alerta con SweetAlert
             Swal.fire('Error', 'Error al eliminar el agremiado', 'error');
           }
         );
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // Operación cuando se cancela
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Agremiado no eliminado',
+          'error'
+        );
       }
     });
   }

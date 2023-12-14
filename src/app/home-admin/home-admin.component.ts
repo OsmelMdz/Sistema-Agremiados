@@ -11,7 +11,7 @@ import { AgremiadoService } from '../agremiado.service';
 })
 export class HomeAdminComponent {
   agremiados: any[] = [];
-  constructor(private rou: Router, private authS: LoginService,private agremiado: AgremiadoService) { }
+  constructor(private rou: Router, private authS: LoginService, private agremiado: AgremiadoService) { }
   logOut() {
     this.authS.logOut();
   }
@@ -34,31 +34,31 @@ export class HomeAdminComponent {
 
   confirmarAlert() {
     Swal.fire({
-    title: 'Deseas Cerrar Sesión?',
-     icon: 'warning',
-    showCancelButton: true,
+      title: 'Deseas Cerrar Sesión?',
+      icon: 'warning',
+      showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-     confirmButtonText: 'Si'
-   }).then((result) => {
-    if (result.isConfirmed) {
+      confirmButtonText: 'Si'
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.logOut();
         Swal.fire(
           'Cerrando Sesión',
           'Has cerrado tu sesión correctamente.',
           'success'
         );
-    }
-  });
+      }
+    });
   }
 
- // userD: any;;
- // getUser() {
-   // const userL = JSON.parse(localStorage.getItem('user') || '[]');
- //   this.userD = userL;
+  // userD: any;;
+  // getUser() {
+  // const userL = JSON.parse(localStorage.getItem('user') || '[]');
+  //   this.userD = userL;
   //  console.log(this.userD);
 
 
-//  }
+  //  }
 
 }

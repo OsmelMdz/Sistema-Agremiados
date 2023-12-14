@@ -39,14 +39,13 @@
             <div class="col-xl-9">
               <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
-                  <form (ngSubmit)="agregarSolicitud()" #solicitudForm="ngForm">
+                  <form (ngSubmit)="agregarSolicitud()" [formGroup]="solicitudForm">
                     <div class="row align-items-center pt-4 pb-3">
                       <div class="col-md-3 ps-5">
                         <h2 class="mb-0">NUE</h2>
                       </div>
                       <div class="col-md-9 pe-5">
-                        <input type="text" class="form-control form-control-lg" name="NUE"
-                          [(ngModel)]="nuevaSolicitud.NUE" required />
+                        <input type="text" class="form-control form-control-lg" formControlName="NUE" required />
                       </div>
                     </div>
                     <hr class="mx-n3">
@@ -55,6 +54,7 @@
                         <h2 class="mb-0">Ruta del Archivo</h2>
                       </div>
                       <div class="col-md-9 pe-5">
+                        <!-- Actualicé (change) a (change)="onFileSelected($event)" -->
                         <input type="file" class="form-control form-control-lg" id="formFileLg"
                           (change)="onFileSelected($event)" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png" required />
                         <div class="small text-muted mt-2">Subir cualquier archivo de tipo pdf, doc, docx, jpg, jpeg,

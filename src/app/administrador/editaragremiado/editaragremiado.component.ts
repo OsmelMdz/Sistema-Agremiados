@@ -1,7 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AgremiadoService } from 'src/app/agremiado.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 interface Agremiado {
   id: number;
@@ -27,7 +27,8 @@ export class EditaragremiadoComponent {
   @Input() agremiado!: Agremiado; // Asegúrate de utilizar el tipo correcto (Agremiado) en lugar de any
   agremiadoForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private tuServicio: AgremiadoService, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private fb: FormBuilder, private tuServicio: AgremiadoService, @Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<EditaragremiadoComponent>  // Agrega esta línea
+  ) {
     if (data && data.agremiado) {
       this.agremiadoForm = this.fb.group({
         a_paterno: [data.agremiado.a_paterno, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
@@ -81,7 +82,7 @@ export class EditaragremiadoComponent {
           text: 'Agremiado actualizado correctamente',
           showConfirmButton: true
         });
-        location.reload();
+        this.dialogRef.close(); // Cerrar el formulario aquí
       },
       error => {
         console.error('Error al actualizar agremiado', error);
@@ -92,7 +93,7 @@ export class EditaragremiadoComponent {
           showConfirmButton: true
         });
       }
-
     );
   }
+
 }

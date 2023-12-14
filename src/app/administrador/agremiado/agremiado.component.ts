@@ -40,7 +40,7 @@ export class AgremiadoComponent {
           text: 'Agremiado agregado correctamente',
           showConfirmButton: true
         });
-        location.reload();
+        this.agremiadoForm.reset();
       },
       error => {
         console.error('Error al agregar agremiado', error);
